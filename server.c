@@ -60,7 +60,7 @@ void login(Package rqst, const char* filename){
 	fclose(f_out);
 }
 
-void signIn(Package rqst, const char* filename){
+void newAccount(Package rqst, const char* filename){
 	FILE* f_data = fopen(filename, "a");
 	FILE* f_out = fopen(OUT_FILE, "w");
 	if (f_out == NULL){
@@ -83,7 +83,7 @@ int main(){
 	Package request;	
 	request = readRequest(REQUEST_FILE);
 	if (strcmp(request.operation, "login") == 0) login(request, DATA_FILE);
-	else if (strcmp(request.operation, "register") == 0) signIn(request, DATA_FILE);
+	else if (strcmp(request.operation, "register") == 0) newAccount(request, DATA_FILE);
 	else {
 		printf("Invalid request.\n");
 		exit(EXIT_FAILURE);
