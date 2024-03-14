@@ -10,6 +10,7 @@
 #define SUCCESS "success"
 #define FAILURE "failure"
 #define RESPONSE_LENGTH 7
+#define ABORT "abort"
 
 typedef struct {
 	char operation[OPERATION_LENGTH];
