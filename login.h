@@ -5,6 +5,11 @@
 #define REQUEST_FILE "request.txt"
 #define DATA_FILE "data.txt"
 #define RESPONSE_FILE "response.txt"
+#define LOGIN_OPERATION "login"
+#define NEW_USER_OPERATION "register"
+#define SUCCESS "success"
+#define FAILURE "failure"
+#define RESPONSE_LENGTH 7
 
 typedef struct {
 	char operation[OPERATION_LENGTH];
