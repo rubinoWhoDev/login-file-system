@@ -4,19 +4,7 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include "login.h"
-//#define OPERATION_LENGTH 16
-//#define STR_LENGTH 128
-//#define REQUEST_FILE "request.txt"
-//#define DATA_FILE "data.txt"
-//#define RESPONCE_FILE "responce.txt"
 
-/*
-typedef struct {
-	char operation[OPERATION_LENGTH];
-	char name[STR_LENGTH];
-	char password[STR_LENGTH];
-} Package;
-*/
 Package readRequest(const char* filename){
 	Package pkg;
 	FILE* f_request = NULL;
