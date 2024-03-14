@@ -2,18 +2,20 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#define OPERATION_LENGTH 16
-#define STR_LENGTH 128
-#define REQUEST_FILE "request.txt"
-#define DATA_FILE "data.txt"
-#define OUT_FILE "out.txt"
+#include "login.h"
+//#define OPERATION_LENGTH 16
+//#define STR_LENGTH 128
+//#define REQUEST_FILE "request.txt"
+//#define DATA_FILE "data.txt"
+//#define RESPONCE_FILE "responce.txt"
 
+/*
 typedef struct {
 	char operation[OPERATION_LENGTH];
 	char name[STR_LENGTH];
 	char password[STR_LENGTH];
 } Package;
-
+*/
 Package readRequest(const char* filename){
 	Package pkg;
 	FILE* f_request = NULL;
@@ -29,7 +31,7 @@ Package readRequest(const char* filename){
 
 void login(Package rqst, const char* filename){
 	FILE* f_data = fopen(filename, "r");
-	FILE* f_out = fopen(OUT_FILE, "w");	
+	FILE* f_out = fopen(RESPONCE_FILE, "w");	
 	if (f_out == NULL){
 		printf("Error in opening output file.\n");
 		fclose(f_data);
@@ -62,7 +64,7 @@ void login(Package rqst, const char* filename){
 
 void newAccount(Package rqst, const char* filename){
 	FILE* f_data = fopen(filename, "a");
-	FILE* f_out = fopen(OUT_FILE, "w");
+	FILE* f_out = fopen(RESPONCE_FILE, "w");
 	if (f_out == NULL){
 		printf("Error in opening output file.\n");
 		fclose(f_data);
