@@ -48,8 +48,14 @@ void login(Package rqst, const char* filename){
 		}
 	}
 	
-	if (found) fprintf(f_out, SUCCESS);
-	else fprintf(f_out, FAILURE);
+	if (found) {
+		fprintf(f_out, SUCCESS);
+		printf("Login success.\n");
+	}
+	else {
+		fprintf(f_out, FAILURE);
+		printf("Login failed.\n");
+	}
 
 	fclose(f_data);
 	fclose(f_out);
@@ -70,6 +76,7 @@ void newAccount(Package rqst, const char* filename){
 			if (fscanf(f_data, "%128s %128s\n", nameBuff, passBuff) != 2) continue;
 			if (strcmp(nameBuff, rqst.name) == 0){
 				fprintf(f_out, FAILURE);
+				printf("User already exists.\n");
 				fclose(f_out);
 				fclose(f_data);
 				return;
@@ -81,11 +88,13 @@ void newAccount(Package rqst, const char* filename){
 	f_data = fopen(filename, "a");
 	if (f_data == NULL){
 		fprintf(f_out, FAILURE);
+		printf("Error in writing on disk.\n");
 		fclose(f_out);
 		return;
 	}
 	fprintf(f_data, "%s %s\n", rqst.name, rqst.password);
 	fprintf(f_out, SUCCESS);
+	printf("New user operation success.\n");
 	fclose(f_data);
 	fclose(f_out);
 }
@@ -96,7 +105,7 @@ int main(){
 		request = readRequest(REQUEST_FILE);
 		if (strcmp(request.operation, LOGIN_OPERATION) == 0) login(request, DATA_FILE);
 		else if (strcmp(request.operation, NEW_USER_OPERATION) == 0) newAccount(request, DATA_FILE);
-	} while (strcmp(request.operation, ABORT));
+	} while (strcmp(request.operation, ABORT) != 0);
 	
 	return EXIT_SUCCESS; 
 }
